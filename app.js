@@ -48,7 +48,7 @@ app.use(
   })
 );
 
-// view engine setup 設置模板引擎 ejs
+//view engine setup 設置模板引擎 ejs
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
