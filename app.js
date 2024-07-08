@@ -19,7 +19,8 @@ const DB_URL = process.env.atlas_URL;
 
 const app = express();
 
-
+// 設置 trust proxy，這裡的 1 代表信任一層代理 (因後端運行在一個反向代理(render)後面)
+app.set('trust proxy', 1);
 
 //設置 session 中間件
 app.use(session({
