@@ -31,10 +31,11 @@ app.use(session({
   store: MongoStore.create({
     mongoUrl: DB_URL //數據庫連接配置
   }),
-  cookie: {
-
+  cookie: {   
     httpOnly: true, //開啟後 前端無法通過 js操作
-    maxAge: 1000 * 60 * 60 * 24 * 7 //控制sessionID的過期時間(單位:毫秒)
+    maxAge: 1000 * 60 * 60 * 24 * 7, //控制sessionID的過期時間(單位:毫秒)
+    sameSite: 'None', // 或 'None' 如果使用跨域请求
+    secure: true, // 僅在 HTTPS 連接中傳遞 cookie
   },
 }))
 
