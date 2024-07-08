@@ -26,8 +26,8 @@ app.set('trust proxy', 1);
 app.use(session({
   name: 'sid', //設置 cookie的name,默認值是: connect.sid
   secret: 'secretsecret', //參與加密的字符串(又稱簽名) 加鹽
-  saveUninitialized: false, //是否為每次請求都設置一個cookie用來存儲session的id
-  resave: true, //是否在每次請求時重新保存 session 
+  saveUninitialized: true, //是否為每次請求都設置一個cookie用來存儲session的id
+  resave: false, //是否在每次請求時重新保存 session 
   store: MongoStore.create({
     mongoUrl: DB_URL //數據庫連接配置
   }),
@@ -74,6 +74,13 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // Return the error response as JSON
+  res.status(err.status || 500).json({
+    message: err.message,
+    // In production, do not expose stack trace or internal error details
+    error: req.app.get('env') === 'development' ? err : {}
+  });
 
   /*
   // render the error page
