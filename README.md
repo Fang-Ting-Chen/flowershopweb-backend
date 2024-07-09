@@ -1,6 +1,6 @@
 Demo
 ===
-網站入口: https://fang-ting-chen.github.io/flowershopweb-frontend/ 
+網站入口: https://fang-ting-chen.github.io/flowershopweb-frontend/  
 前端專案: https://github.com/Fang-Ting-Chen/flowershopweb-frontend
 
 專案說明
